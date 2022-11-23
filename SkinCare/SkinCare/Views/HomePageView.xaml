@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="SkinCare.Views.HomePageView"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:fonts="clr-namespace:SkinCare.Fonts"
+             xmlns:helpers="clr-namespace:SkinCare.Helper"
+             xmlns:viewmodels="clr-namespace:SkinCare.ViewModels"
+             BackgroundColor="White"
+             NavigationPage.HasNavigationBar="False">
+
+
+    <Grid>
+        <Grid Padding="30"
+              RowDefinitions="Auto, Auto, Auto, *"
+              RowSpacing="30">
+
+            <Grid ColumnDefinitions="Auto, *, Auto">
+                <ImageButton BackgroundColor="Transparent"
+                             Clicked="MenuTapped"
+                             Source="MenuSmall.png"
+                             VerticalOptions="Center" />
+
+                <Label Grid.Column="1"
+                       FontAttributes="Bold"
+                       FontFamily="PoppinsMed"
+                       FontSize="20"
+                       HorizontalOptions="Center"
+                       Text="FUTURE OF CARE"
+                       TextColor="#2D2942"
+                       VerticalOptions="Center" />
+
+                <Image Grid.Column="2"
+                       HeightRequest="24"
+                       Source="cartIcon.png"
+                       VerticalOptions="Center"
+                       WidthRequest="24" />
+            </Grid>
+
+            <Grid Grid.Row="1"
+                  ColumnDefinitions="*, Auto"
+                  ColumnSpacing="15">
+
+                <Frame Padding="10"
+                       CornerRadius="10"
+                       HasShadow="True">
+
+                    <StackLayout Orientation="Horizontal"
+                                 Spacing="15">
+
+                        <Label FontFamily="fas"
+                               Text="{x:Static fonts:FontAwesomeIcons.Search}"
+                               VerticalOptions="Center" />
+
+                        <Entry Placeholder="Search"
+                               WidthRequest="250" />
+                    </StackLayout>
+                </Frame>
+
+
+
+            </Grid>
+
+            <Grid Grid.Row="2">
+                <StackLayout>
+                    <Label FontFamily="PoppinsMed"
+                           FontSize="18"
+                           Text="Popular"
+                           TextColor="Black" />
+
+
+                    <CollectionView Margin="0,20"
+                                    HeightRequest="125"
+                                    ItemsSource="{Binding Categories}"
+                                    SelectionChanged="CollectionView_SelectionChanged"
+                                    SelectionMode="Single"
+                                    VerticalOptions="FillAndExpand">
+
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Horizontal" />
+                        </CollectionView.ItemsLayout>
+
+                        <CollectionView.EmptyView>
+                            <Label HorizontalOptions="Center"
+                                   Text="Not found"
+                                   TextColor="Gray"
+                                   VerticalOptions="Center" />
+                        </CollectionView.EmptyView>
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+
+                                <StackLayout Padding="0,0,15,0">
+                                    <Frame BackgroundColor="#feeee8"
+                                           CornerRadius="10"
+                                           HasShadow="False"
+                                           HeightRequest="50">
+                                        <Image Aspect="AspectFit"
+                                               HeightRequest="120"
+                                               Source="{Binding ImageUrl}" />
+
+                                    </Frame>
+
+                                    <StackLayout>
+                                        <Label HorizontalOptions="Center"
+                                               Text="{Binding CategoryName}" />
+                                    </StackLayout>
+
+                                    <!--<StackLayout>
+
+
+                                            <Label FontSize="13"
+                                                   HorizontalOptions="Center"
+                                                   Text="{Binding ProductName}"
+                                                   TextColor="#2D2942" />
+
+                                            <Label FontAttributes="Bold"
+                                                   FontSize="12"
+                                                   Text="{Binding Price, StringFormat='PHP{0}'}"
+                                                   TextColor="#2D2942" />
+
+
+                                        </StackLayout>-->
+                                </StackLayout>
+
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </Grid>
+        </Grid>
+
+        <Grid x:Name="MenuGrid"
+              IsVisible="False">
+            <BoxView x:Name="MenuOverlay"
+                     BackgroundColor="Black"
+                     Opacity="0.35">
+                <BoxView.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OverlayTapped" />
+                </BoxView.GestureRecognizers>
+            </BoxView>
+
+
+            <Grid x:Name="MenuView"
+                  BackgroundColor="#7E7372"
+                  HorizontalOptions="Start"
+                  TranslationX="-260"
+                  WidthRequest="260">
+                <Grid.Clip>
+                    <PathGeometry Figures="M0,0V511.043H140.714l86.992-116.012V0Z" />
+                </Grid.Clip>
+
+                <StackLayout Margin="30,100"
+                             BindableLayout.ItemsSource="{Binding MenuList}"
+                             Spacing="20">
+
+                    <BindableLayout.ItemTemplate>
+
+                        <DataTemplate>
+
+                            <StackLayout Orientation="Horizontal"
+                                         Spacing="20">
+
+                                <Grid Grid.Row="2"
+                                      HeightRequest="46"
+                                      HorizontalOptions="Start"
+                                      VerticalOptions="Start"
+                                      WidthRequest="46">
+
+                                    <ImageButton Padding="10"
+                                                 Aspect="AspectFit"
+                                                 BackgroundColor="White"
+                                                 CornerRadius="20"
+                                                 HeightRequest="5"
+                                                 Source="{Binding Icon}"
+                                                 WidthRequest="5" />
+
+
+
+                                </Grid>
+
+                                <Label FontFamily="NormalFont"
+                                       FontSize="16"
+                                       Text="{Binding Name}"
+                                       TextColor="White"
+                                       VerticalOptions="Center" />
+
+                            </StackLayout>
+
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+
+
+                </StackLayout>
+
+
+
+                <StackLayout>
+
+                    <Button Margin="20"
+                            BackgroundColor="Transparent"
+                            Command="{Binding BackBtn}"
+                            HorizontalOptions="StartAndExpand"
+                            Text="Back"
+                            VerticalOptions="StartAndExpand" />
+                </StackLayout>
+            </Grid>
+
+
+        </Grid>
+        <!--<Grid Grid.Row="1"
+              BackgroundColor="red">
+            <StackLayout>
+                <Label Text="asd" />
+            </StackLayout>
+        </Grid>-->
+        <!--<Grid RowDefinitions="60, 10">
+
+
+            <Frame Grid.Row="2"
+                   Margin="20,0,20,0"
+                   Padding="10,0"
+                   BackgroundColor="WhiteSmoke"
+                   CornerRadius="10"
+                   Opacity="0.7"
+                   VerticalOptions="StartAndExpand">
+                <Grid ColumnDefinitions="15, *">
+
+                    <Label Grid.Column="0"
+                           FontFamily="fas"
+                           Text="{x:Static fonts:FontAwesomeIcons.Search}"
+                           VerticalOptions="Center" />
+
+                    <Entry Grid.Column="1"
+                           FontSize="15"
+                           Placeholder="Search"
+                           PlaceholderColor="Black"
+                           VerticalOptions="End" />
+
+
+
+                </Grid>
+
+
+            </Frame>
+
+
+        </Grid>-->
+
+
+    </Grid>
+</ContentPage>
+

@@ -1,0 +1,94 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Fonts\Font Awesome 5 Free-Solid-900.otf" />
+    <None Remove="Resources\Fonts\PoppinsMedium.ttf" />
+    <None Remove="Resources\Fonts\Roboto-Regular.ttf" />
+    <None Remove="Resources\Images\avatar.png" />
+    <None Remove="Resources\Images\avatar1.png" />
+    <None Remove="Resources\Images\cartIcon.png" />
+    <None Remove="Resources\Images\favoriteIcon.png" />
+    <None Remove="Resources\Images\LoginPicture.jpg" />
+    <None Remove="Resources\Images\LoginPicture2.jpg" />
+    <None Remove="Resources\Images\menu-medium.png" />
+    <None Remove="Resources\Images\menu-small.png" />
+    <None Remove="Resources\Images\moisturizer2.png" />
+    <None Remove="Resources\Images\Nmoisturizer.png" />
+    <None Remove="Resources\Images\onboardingImage.png" />
+    <None Remove="Resources\Images\packageIcon.png" />
+    <None Remove="Resources\Images\product1-removebg-preview.png" />
+    <None Remove="Resources\Images\product1.jpg" />
+    <None Remove="Resources\Images\Serum.png" />
+    <None Remove="Resources\Images\Serum1.jpg" />
+    <None Remove="Resources\Images\sunscreen.png" />
+    <None Remove="Resources\Images\sunscreen2.png" />
+    <None Remove="Resources\Images\Toner.png" />
+    <None Remove="Resources\Images\Toner2.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Fonts\Font Awesome 5 Free-Solid-900.otf" />
+    <EmbeddedResource Include="Resources\Fonts\PoppinsMedium.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\Roboto-Regular.ttf" />
+    <EmbeddedResource Include="Resources\Images\avatar.png" />
+    <EmbeddedResource Include="Resources\Images\avatar1.png" />
+    <EmbeddedResource Include="Resources\Images\cartIcon.png" />
+    <EmbeddedResource Include="Resources\Images\favoriteIcon.png" />
+    <EmbeddedResource Include="Resources\Images\LoginPicture.jpg" />
+    <EmbeddedResource Include="Resources\Images\LoginPicture2.jpg" />
+    <EmbeddedResource Include="Resources\Images\menu-medium.png" />
+    <EmbeddedResource Include="Resources\Images\menu-small.png" />
+    <EmbeddedResource Include="Resources\Images\moisturizer2.png" />
+    <EmbeddedResource Include="Resources\Images\Nmoisturizer.png" />
+    <EmbeddedResource Include="Resources\Images\onboardingImage.png" />
+    <EmbeddedResource Include="Resources\Images\packageIcon.png" />
+    <EmbeddedResource Include="Resources\Images\product1-removebg-preview.png" />
+    <EmbeddedResource Include="Resources\Images\product1.jpg" />
+    <EmbeddedResource Include="Resources\Images\Serum.png" />
+    <EmbeddedResource Include="Resources\Images\Serum1.jpg" />
+    <EmbeddedResource Include="Resources\Images\sunscreen.png" />
+    <EmbeddedResource Include="Resources\Images\sunscreen2.png" />
+    <EmbeddedResource Include="Resources\Images\Toner.png" />
+    <EmbeddedResource Include="Resources\Images\Toner2.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FirebaseDatabase.net" Version="4.1.0" />
+    <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2515" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
+    <PackageReference Include="Xamarin.Forms.PancakeView" Version="2.3.0.759" />
+    <PackageReference Include="Xamarin.Plugin.SharedTransitions" Version="2.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Views\HomePageView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\LoginView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\OnboardingPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\SettingPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Renderer\" />
+  </ItemGroup>
+</Project>

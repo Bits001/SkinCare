@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="SkinCare.Views.LoginView"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:localimages="clr-namespace:SkinCare.Resources.Images"
+             xmlns:renderer="clr-namespace:SkinCare.Renderer"
+             xmlns:vm="clr-namespace:SkinCare.ViewModels"
+             BackgroundColor="White"
+             NavigationPage.HasNavigationBar="False">
+
+
+    <ContentPage.Content>
+
+        <Grid Padding="20"
+              VerticalOptions="Center">
+
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Offset="0.1" Color="Beige" />
+                    <GradientStop Offset="1.0" Color="Gray" />
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Grid RowDefinitions="0.8*,0.1*">
+
+                <StackLayout Grid.Row="0"
+                             HorizontalOptions="CenterAndExpand"
+                             VerticalOptions="Center">
+                    <Image HeightRequest="370"
+                           Source="{localimages:ImageResource SkinCare.Resources.Images.LoginPicture2.jpg}"
+                           VerticalOptions="Start"
+                           WidthRequest="460" />
+
+                    <Label Margin="20"
+                           FontFamily="PoppinsMed"
+                           FontSize="25"
+                           HorizontalOptions="Start"
+                           TextColor="Black"
+                           VerticalOptions="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Let's" />
+                                <Span Text="&#10;" />
+                                <Span Text="get started!" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                </StackLayout>
+                <renderer:CustomFrame Grid.Row="3"
+                                      BackgroundColor="LightGray"
+                                      BorderColor="Transparent"
+                                      CornerRadius="20"
+                                      Opacity="0.9">
+
+
+                    <StackLayout>
+
+                        <Entry Placeholder="User Name"
+                               PlaceholderColor="Black"
+                               Text="{Binding UserName}"
+                               TextColor="Black" />
+
+                        <Entry IsPassword="True"
+                               Placeholder="Password"
+                               PlaceholderColor="Black"
+                               Text="{Binding Password}"
+                               TextColor="Black" />
+
+                        <Button BackgroundColor="#D9F6D9"
+                                Command="{Binding LoginCmd}"
+                                CornerRadius="10"
+                                Text="LOGIN" />
+
+
+                        <Button BackgroundColor="#D9F6D9"
+                                Command="{Binding RegisterCmd}"
+                                CornerRadius="10"
+                                Text="REGISTER" />
+
+                    </StackLayout>
+                </renderer:CustomFrame>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

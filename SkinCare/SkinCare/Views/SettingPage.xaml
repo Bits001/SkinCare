@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="SkinCare.Views.SettingPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <ContentPage.Content>
+        <StackLayout>
+            <Button x:Name="CategoryBtn"
+                    Clicked="CategoryBtn_Clicked"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Manage Categories"
+                    VerticalOptions="CenterAndExpand" />
+
+            <Button x:Name="ProductBtn"
+                    Clicked="ProductBtn_Clicked"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Manage Categories"
+                    VerticalOptions="CenterAndExpand" />
+
+            <Grid BackgroundColor="red">
+                <CollectionView ItemsSource="{Binding CategoryModel}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout>
+                                <Frame>
+                                    <Image Source="{Binding ImageUrl}" />
+                                </Frame>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+        </StackLayout>
+
+
+    </ContentPage.Content>
+</ContentPage>

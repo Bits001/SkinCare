@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="SkinCare.Views.OnboardingPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:localimages="clr-namespace:SkinCare.Resources.Images"
+             xmlns:viewmodel="clr-namespace:SkinCare.ViewModels"
+             x:DataType="viewmodel:OnboardingViewModel"
+             NavigationPage.HasNavigationBar="False">
+
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Offset="0.1" Color="Gray" />
+                <GradientStop Offset="1.0" Color="LightGray" />
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <Grid RowDefinitions="*,Auto,120,40">
+
+            <Image Grid.Row="0"
+                   Margin="10,0,10,0"
+                   HeightRequest="450"
+                   HorizontalOptions="CenterAndExpand"
+                   Source="{localimages:ImageResource SkinCare.Resources.Images.onboardingImage.png}"
+                   VerticalOptions="CenterAndExpand"
+                   WidthRequest="450" />
+
+            <Label Grid.Row="0"
+                   Margin="30,0,0,60"
+                   FontFamily="PoppinsMed"
+                   FontSize="50"
+                   TextColor="White"
+                   VerticalOptions="EndAndExpand">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Future" />
+                        <Span Text="&#160;" />
+                        <Span Text="of Care" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label Margin="30,20,0,0"
+                   FontFamily="PoppinsMed"
+                   FontSize="16"
+                   TextColor="White"
+                   VerticalOptions="End">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Delivers, enables, and" />
+                        <Span Text="&#10;" />
+                        <Span Text="empowers you" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Button Grid.Row="2"
+                    Margin="0,0,30,0"
+                    BackgroundColor="#EDC8B2"
+                    BorderRadius="60"
+                    Command="{Binding StartCmd}"
+                    FontFamily="PoppinsMed"
+                    FontSize="20"
+                    HeightRequest="120"
+                    HorizontalOptions="EndAndExpand"
+                    Text="START"
+                    WidthRequest="120" />
+        </Grid>
+
+    </Grid>
+
+</ContentPage>
