@@ -11,7 +11,7 @@ namespace SkinCare
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new HomePageView());
+            MainPage = new NavigationPage(new OnboardingPageView());
         }
 
         protected override void OnStart()

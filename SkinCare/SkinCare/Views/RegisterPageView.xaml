@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SkinCare.Views.RegisterPageView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    xmlns:fonts="clr-namespace:SkinCare.Fonts"
+    xmlns:images="clr-namespace:SkinCare.Resources.Images"
+    xmlns:renderer="clr-namespace:SkinCare.Renderer"
+    NavigationPage.HasNavigationBar="False">
+
+    <StackLayout>
+        <ffimageloading:SvgCachedImage Aspect="AspectFit" Source="{images:ImageResource SkinCare.Resources.Images.onboardingImage.png}" />
+        <Label
+            Margin="0,-30,0,0"
+            FontFamily="PoppinsMed"
+            FontSize="24"
+            HorizontalTextAlignment="Center"
+            TextColor="Black"
+            VerticalOptions="CenterAndExpand">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Welcome to SkinCare" />
+                    <Span Text="&#10;" />
+                    <Span FontSize="16" Text="Join us" />
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+
+        <Grid RowDefinitions=".11*,.13*,.13*,.13*,.14*,.14*,.14*">
+            <Label
+                Grid.Row="0"
+                Grid.Column="0"
+                Margin="20,0"
+                FontFamily="fas"
+                FontSize="20"
+                Text="{x:Static fonts:FontAwesomeIcons.Signature}"
+                VerticalTextAlignment="Center" />
+
+            <renderer:BorderlessEntry
+                Grid.Row="0"
+                Margin="40,0"
+                FontFamily="PoppinsMed"
+                Placeholder="First Name"
+                TextColor="Black"
+                VerticalTextAlignment="Center" />
+
+            <Label
+                Grid.Row="1"
+                Grid.Column="0"
+                Margin="20,0"
+                FontFamily="fas"
+                FontSize="20"
+                Text="{x:Static fonts:FontAwesomeIcons.Signature}"
+                VerticalTextAlignment="Center" />
+
+            <renderer:BorderlessEntry
+                Grid.Row="1"
+                Margin="40,0"
+                FontFamily="PoppinsMed"
+                Placeholder="Last Name"
+                TextColor="Black"
+                VerticalTextAlignment="Center" />
+
+            <Label
+                Grid.Row="2"
+                Grid.Column="0"
+                Margin="20,0"
+                FontFamily="fas"
+                FontSize="20"
+                Text="{x:Static fonts:FontAwesomeIcons.At}"
+                VerticalTextAlignment="Center" />
+
+
+            <renderer:BorderlessEntry
+                Grid.Row="2"
+                Margin="40,0"
+                FontFamily="PoppinsMed"
+                Placeholder="Email Address "
+                TextColor="Black"
+                VerticalTextAlignment="Center" />
+
+
+            <Label
+                Grid.Row="3"
+                Grid.Column="0"
+                Margin="20,0"
+                FontFamily="fas"
+                FontSize="20"
+                Text="{x:Static fonts:FontAwesomeIcons.Phone}"
+                VerticalTextAlignment="Center" />
+
+            <renderer:BorderlessEntry
+                Grid.Row="3"
+                Margin="40,0"
+                FontFamily="PoppinsMed"
+                Keyboard="Telephone"
+                Placeholder="Contact Number "
+                TextColor="Black"
+                VerticalTextAlignment="Center" />
+
+            <Label
+                Grid.Row="4"
+                Grid.Column="0"
+                Margin="20,0"
+                FontFamily="fas"
+                FontSize="20"
+                Text="{x:Static fonts:FontAwesomeIcons.ShieldAlt}"
+                VerticalTextAlignment="Center" />
+
+            <renderer:BorderlessEntry
+                Grid.Row="4"
+                Margin="40,0"
+                FontFamily="PoppinsMed"
+                Placeholder="Password "
+                TextColor="Black"
+                VerticalTextAlignment="Center" />
+
+            <Label
+                Grid.Row="5"
+                Grid.Column="0"
+                Margin="20,0"
+                FontFamily="fas"
+                FontSize="20"
+                Text="{x:Static fonts:FontAwesomeIcons.BirthdayCake}"
+                VerticalTextAlignment="Center" />
+            <DatePicker
+                Grid.Row="5"
+                Grid.Column="0"
+                Margin="40,0" />
+
+            <Button
+                Grid.Row="6"
+                Margin="20,10,20,10"
+                CornerRadius="20"
+                HeightRequest="20"
+                Text="Register"
+                WidthRequest="20" />
+        </Grid>
+    </StackLayout>
+</ContentPage>

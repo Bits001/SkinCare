@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SkinCare.Views.OnboardingPageView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:b="clr-namespace:SkinCare.Behavior"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    xmlns:gradient="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:images="clr-namespace:SkinCare.Resources.Images"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodel="clr-namespace:SkinCare.ViewModels"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
+
+    <ContentPage.Content>
+        <Grid RowDefinitions="50,*,Auto">
+
+            <!--<gradient:PancakeView Grid.RowSpan="3" BackgroundGradientEndPoint="0,1">
+                <gradient:PancakeView.BackgroundGradientStops>
+                    <gradient:GradientStopCollection>
+                        <gradient:GradientStop Offset="0.1" Color="#3691dd" />
+                        <gradient:GradientStop Offset="1" Color="#5803ce" />
+                    </gradient:GradientStopCollection>
+                </gradient:PancakeView.BackgroundGradientStops>
+            </gradient:PancakeView>-->
+
+            <ffimageloading:SvgCachedImage
+                Grid.RowSpan="3"
+                Margin="0,-30,0,0"
+                HeightRequest="850"
+                Source="{images:ImageResource SkinCare.Resources.Images.OnboardingBackground.png}"
+                WidthRequest="850" />
+
+            <Button
+                Grid.Row="0"
+                Margin="0,10,10,0"
+                BackgroundColor="Transparent"
+                Command="{Binding SkipCmd}"
+                HorizontalOptions="End"
+                Text="Skip"
+                TextColor="Black" />
+
+            <CarouselView
+                Grid.Row="1"
+                Margin="20,0"
+                IndicatorView="indicatorView"
+                ItemsSource="{Binding Onboarding}"
+                Position="{Binding PositionIndex, Mode=TwoWay}">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <ContentView Content="{Binding CarouselItems}" />
+                    </DataTemplate>
+
+                </CarouselView.ItemTemplate>
+                <CarouselView.Behaviors>
+                    <b:CarouselBehavior />
+                </CarouselView.Behaviors>
+
+            </CarouselView>
+            <IndicatorView
+                x:Name="indicatorView"
+                Grid.Row="1"
+                Grid.Column="0"
+                Margin="0,120,0,0"
+                HorizontalOptions="CenterAndExpand"
+                IndicatorColor="Gray"
+                SelectedIndicatorColor="Beige"
+                VerticalOptions="CenterAndExpand" />
+
+            <Button
+                Grid.Row="2"
+                Margin="0,0,0,125"
+                BackgroundColor="White"
+                Command="{Binding NextCmd}"
+                CornerRadius="10"
+                HeightRequest="20"
+                HorizontalOptions="CenterAndExpand"
+                Text="{Binding NetButtonText}"
+                TextColor="Black"
+                WidthRequest="205" />
+
+
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

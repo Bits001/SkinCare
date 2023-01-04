@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="SkinCare.Views.WalkthroughItemPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <ContentView.Content>
+        <StackLayout Margin="30,0">
+            <ffimageloading:SvgCachedImage
+                Margin="0,30,0,0"
+                BackgroundColor="Transparent"
+                BitmapOptimizations="True"
+                HeightRequest="300"
+                Source="{Binding ImagePath}"
+                VerticalOptions="Center"
+                WidthRequest="300" />
+            <Label
+                Margin="0,60,0,0"
+                FontFamily="PoppinsMed"
+                FontSize="30"
+                HorizontalOptions="Center"
+                Opacity="1"
+                Text="{Binding Header}"
+                TextColor="Black"
+                TranslationY="10" />
+
+            <Label
+                Margin="0,0,0,0"
+                FontFamily="PoppinsMed"
+                FontSize="20"
+                HorizontalOptions="Center"
+                Opacity="0"
+                Text="{Binding Content}"
+                TextColor="Black"
+                TranslationY="60" />
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

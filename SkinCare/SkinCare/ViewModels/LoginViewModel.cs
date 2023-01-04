@@ -1,138 +1,72 @@
-﻿using SkinCare.Services;
+﻿using GalaSoft.MvvmLight.Views;
+using MvvmHelpers.Interfaces;
+using SkinCare.Services;
 using SkinCare.Views;
 using System;
+using System.Collections.Generic;
+using System.Text;
 using System.Threading.Tasks;
-using Xamarin.Essentials;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace SkinCare.ViewModels
 {
-    public class LoginViewModel : BaseViewModel
+    public class LoginViewModel : ViewModelBase
+
     {
-        #region properties
-        private string _Username;
-        public string Username
+        public LoginViewModel()
         {
-            set
-            {
-                this._Username = value;
-                OnPropertyChanged();
-            }
-            get
-            {
-                return this._Username;
-            }
-            
-        }
-        private string _Password;
-        public string Password
-        {
-            set 
-            { 
-                this._Password = value;
-                OnPropertyChanged();
-            }
-            get { return this._Password; }
-        }
-        private bool _IsBusy;
-        public bool IsBusy
-        {
-            set 
-            {
-                this._IsBusy = value;
-                OnPropertyChanged();
-            }
-            get
-            {
-                return this._IsBusy;
-            }
+          //_pageService = pageService;
+
+          ChangeTemplateCmd = new Command<string>(key => AccountPageTemplate = key);
+          LoginCmd = new Command(async () => await HomePageView());
+          PrivacyCmd = new Command(async () => await ShowPrivacyPolicy());
+          TermsCmd = new Command(async () => await ShowTermsAndCondition());
+            RegisterCmd = new Command(async () => await RegisterPageView());
         }
 
-        private bool _Result;
-        public bool Result
+        private Task ShowTermsAndCondition()
         {
-            set
-            {
-                this._Result = value;
-                OnPropertyChanged();
-            }
-            get
-            {
-                return this._Result;
-            }
+            return Application.Current.MainPage.DisplayAlert("Terms and Condition", TermsAndCondition, "OK");
         }
 
+        private Task ShowPrivacyPolicy()
+        {
+            return Application.Current.MainPage.DisplayAlert("Privacy & Policy", PrivacyPolicy, "OK");
+        }
+
+
+
+        private async Task RegisterPageView()
+        {
+            Application.Current.MainPage = new NavigationPage(new RegisterPageView());
+        }
+
+        private async Task  HomePageView()
+        {
+             Application.Current.MainPage = new NavigationPage(new HomePageView());
+        }
+
+
+
+
+
+
+
+        #region General Properties
+
+        public Command<ScrollView> JoinUsCmd { get; set; }
+        private IPageService _pageService;
         public Command LoginCmd { get; set; }
         public Command RegisterCmd { get; set; }
-
-        public INavigation Navigation { get; set; }
+        public string AccountPageTemplate { get; set; }
+        public Command ChangeTemplateCmd { get; }
+        
+        public Command PrivacyCmd { get; }
+        public Command TermsCmd { get; } 
+       
+        private const string PrivacyPolicy = "asd";
+        private const string TermsAndCondition = "This page contains our terms & conditions, as well as information about our return policy, etc. Please read these terms & conditions carefully before ordering any products from Beauty Everyday. By ordering any of our products, you agree to be bound by these terms & conditions.";
         #endregion
-
-
-        public LoginViewModel(INavigation navigation)
-        {
-
-            LoginCmd = new Command(async () => await LoginCommand());
-            RegisterCmd = new Command(async () => await RegisterCommand());
-            Navigation = navigation;
-        }
-
-        private async Task RegisterCommand()
-        {
-            if (IsBusy)
-                return;
-            try
-            {
-                IsBusy = true;
-                var userService = new UserService();
-                Result = await userService.RegisterUser(Username, Password);
-                if (Result)
-                {
-                    await Application.Current.MainPage.DisplayAlert("Success", "User is Registered", "Ok");
-                   
-                }
-                else
-                {
-                    await Application.Current.MainPage.DisplayAlert("Error", "User already exists", "Ok");
-                }
-            }
-            catch(Exception ex)
-            {
-                await Application.Current.MainPage.DisplayAlert("Error",ex.Message,"Ok");
-            }
-            finally
-            {
-                IsBusy = false;
-            }
-        }
-
-        private async Task LoginCommand()
-        {
-            if (IsBusy)
-                return;
-            try
-            {
-                IsBusy = true;
-                var userService = new UserService();
-                Result = await userService.LoginUser(Username, Password);
-                if(Result)
-                {
-                    Preferences.Set("Username", Username);
-                    await Navigation.PushAsync(new HomePageView());
-                }
-                else
-                {
-                    await Application.Current.MainPage.DisplayAlert("Error", "Invalid Credentials", "Ok");
-                }
-            }
-            catch(Exception ex)
-            {
-                await Application.Current.MainPage.DisplayAlert("Error", ex.Message, "Ok");
-            }
-            finally
-            {
-                IsBusy = false;
-            }
-        }
     }
 }

@@ -708,3 +708,5 @@ C:\Users\bithi\Documents\Projects\SkinCare\SkinCare\SkinCare.Android\obj\Debug\1
 C:\Users\bithi\Documents\Projects\SkinCare\SkinCare\SkinCare.Android\obj\Debug\120\android\src\crc64f8908e42fa42e603\PancakeDrawable.java
 C:\Users\bithi\Documents\Projects\SkinCare\SkinCare\SkinCare.Android\obj\Debug\120\android\src\crc64f8908e42fa42e603\PancakeViewRenderer.java
 C:\Users\bithi\Documents\Projects\SkinCare\SkinCare\SkinCare.Android\obj\Debug\120\android\src\crc64f8908e42fa42e603\RoundedCornerOutlineProvider.java
+C:\Users\bithi\Documents\Projects\SkinCare\SkinCare\SkinCare.Android\obj\Debug\120\android\assets\MvvmHelpers.dll
+C:\Users\bithi\Documents\Projects\SkinCare\SkinCare\SkinCare.Android\obj\Debug\120\android\assets\MvvmHelpers.pdb

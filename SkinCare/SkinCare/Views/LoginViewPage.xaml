@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SkinCare.Views.LoginViewPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fonts="clr-namespace:SkinCare.Fonts"
+    xmlns:images="clr-namespace:SkinCare.Resources.Images"
+    xmlns:templates="clr-namespace:SkinCare.Templates"
+    xmlns:viewmodel="clr-namespace:SkinCare.ViewModels"
+    BackgroundColor="White"
+    ControlTemplate="{StaticResource Login}">
+
+
+    <ContentPage.Resources>
+        <ControlTemplate x:Key="Login">
+            <StackLayout Margin="20,0" Spacing="10">
+
+                <Image
+                    Margin="20"
+                    HeightRequest="250"
+                    HorizontalOptions="Center"
+                    Source="{images:ImageResource SkinCare.Resources.Images.Serum.png}"
+                    VerticalOptions="Center"
+                    WidthRequest="250" />
+                <Label HorizontalTextAlignment="Center" TextColor="Black">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span
+                                FontFamily="PoppinsMed"
+                                FontSize="25"
+                                Text="Hi there! 👋" />
+                            <Span Text="&#10;" />
+                            <Span FontFamily="med" Text="Joined SkinCare before?" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Grid RowDefinitions="*,*">
+
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        FontFamily="fas"
+                        FontSize="20"
+                        HorizontalOptions="Start"
+                        Text="{x:Static fonts:FontAwesomeIcons.At}"
+                        TextColor="Black"
+                        VerticalOptions="Center" />
+
+                    <Entry
+                        Grid.Row="0"
+                        Margin="20,0"
+                        Placeholder="Enter Email"
+                        PlaceholderColor="Black"
+                        TextColor="Black"
+                        VerticalOptions="Center" />
+
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        FontFamily="fas"
+                        FontSize="20"
+                        HorizontalOptions="Start"
+                        Text="{x:Static fonts:FontAwesomeIcons.ShieldAlt}"
+                        TextColor="black"
+                        VerticalOptions="Center" />
+
+                    <Entry
+                        Grid.Row="1"
+                        Margin="20,0"
+                        IsPassword="True"
+                        Placeholder="Enter Password"
+                        PlaceholderColor="Black"
+                        TextColor="Black" />
+                </Grid>
+
+                <Grid Margin="0,20" ColumnDefinitions="*,50">
+
+
+                    <Label
+                        templates:Gestures.Tapped="{TemplateBinding BindingContext.ChangeTemplateCmd}"
+                        templates:Gestures.TappedParameter="Register"
+                        VerticalOptions="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="New to SkinCare App?" />
+                                <Span Text=" Register" TextColor="Blue">
+                                    <Span.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{TemplateBinding BindingContext.RegisterCmd}" />
+                                    </Span.GestureRecognizers>
+                                </Span>
+
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                </Grid>
+
+            </StackLayout>
+
+        </ControlTemplate>
+
+
+        <ControlTemplate x:Key="Register">
+            <ScrollView
+                x:Name="RegisterScrollView"
+                Margin="20,0"
+                VerticalScrollBarVisibility="Never">
+
+                <Grid Grid.Row="0" RowDefinitions="350,*,*,0.5*,0.5*">
+                    <Image
+                        Grid.Row="0"
+                        Margin="0,20"
+                        Source="{images:ImageResource SkinCare.Resources.Images.LoginPicture.jpg}" />
+                    <Label
+                        Grid.Row="1"
+                        HorizontalTextAlignment="Center"
+                        TextColor="#2F2F32">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span
+                                    FontFamily="PoppinsMed"
+                                    FontSize="25"
+                                    Text="Hi there! 👋" />
+                                <Span Text="&#10;" />
+                                <Span
+                                    FontFamily="med"
+                                    FontSize="15"
+                                    Text="New to SkinCare?" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+
+                    <StackLayout Grid.Row="2">
+
+                        <Button
+                            Margin="20,-30,20,0"
+                            Padding="0,5"
+                            BackgroundColor="Gray"
+                            Command="{TemplateBinding BindingContext.JoinUsCmd}"
+                            CommandParameter="{x:Reference RegisterScrollView}"
+                            CornerRadius="10"
+                            Text="Join us"
+                            TextColor="White"
+                            VerticalOptions="CenterAndExpand" />
+
+                        <Label
+                            FontFamily="reg"
+                            HorizontalTextAlignment="Center"
+                            VerticalOptions="EndAndExpand">
+
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="By signing up, please read our " />
+                                    <Span Text="Terms &#38; Conditions " TextColor="Blue">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{TemplateBinding BindingContext.TermsCmd}" />
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                    <Span Text=" and  " TextColor="Black" />
+                                    <Span Text="Privacy Policy" TextColor="Blue">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{TemplateBinding BindingContext.PrivacyCmd}" />
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                    <Span Text="." TextColor="Black" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+
+                        <Label
+                            templates:Gestures.Tapped="{TemplateBinding BindingContext.ChangeTemplateCmd}"
+                            templates:Gestures.TappedParameter="Login"
+                            FontFamily="PoppinsMed"
+                            HorizontalOptions="Center"
+                            VerticalOptions="EndAndExpand">
+
+                            <Label.FormattedText>
+
+                                <FormattedString>
+                                    <Span Text="Joined us before?" />
+                                    <Span Text="  Login" TextColor="Blue">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{TemplateBinding BindingContext.LoginCmd}" />
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+
+                    </StackLayout>
+
+
+
+                    <Grid />
+                </Grid>
+            </ScrollView>
+        </ControlTemplate>
+    </ContentPage.Resources>
+
+    <ContentView>
+        <ContentView.Triggers>
+            <DataTrigger
+                Binding="{Binding AccountPageTemplate}"
+                TargetType="ContentView"
+                Value="Login">
+                <Setter Property="ControlTemplate" Value="{StaticResource Login}" />
+            </DataTrigger>
+
+            <DataTrigger
+                Binding="{Binding AccountPageTemplate}"
+                TargetType="ContentView"
+                Value="Register">
+                <Setter Property="ControlTemplate" Value="{StaticResource Register}" />
+            </DataTrigger>
+        </ContentView.Triggers>
+    </ContentView>
+</ContentPage>
